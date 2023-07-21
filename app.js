@@ -23,24 +23,7 @@ const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/campTW';
 
 const MongoStore = require('connect-mongo');
 //連線atlas db 
-// mongoose.connect(dbUrl);
-// const db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', () => {
-//     console.log('Database connected!')
-// });
-
-// const store = MongoStore.create({
-//     mongoUrl: dbUrl,
-//     touchAfter: 24 * 60 * 60,
-//     crypto: {
-//         secret: 'thisshouldbeabettersecret!'
-//     }
-// });
-
-
-//連線local db 
-mongoose.connect('mongodb://127.0.0.1:27017/campTW');
+mongoose.connect(dbUrl);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
@@ -48,12 +31,29 @@ db.once('open', () => {
 });
 
 const store = MongoStore.create({
-    mongoUrl: 'mongodb://127.0.0.1:27017/campTW',
+    mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
         secret: 'thisshouldbeabettersecret!'
     }
 });
+
+
+//連線local db 
+// mongoose.connect('mongodb://127.0.0.1:27017/campTW');
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', () => {
+//     console.log('Database connected!')
+// });
+
+// const store = MongoStore.create({
+//     mongoUrl: 'mongodb://127.0.0.1:27017/campTW',
+//     touchAfter: 24 * 60 * 60,
+//     crypto: {
+//         secret: 'thisshouldbeabettersecret!'
+//     }
+// });
 
 
 
