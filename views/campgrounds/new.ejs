@@ -1,0 +1,73 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row">
+        <div class="mb-3">
+            <h1 class="text-center">新營地</h1>
+        </div>
+        <div class="col-6 offset-3">
+            <form action="/campgrounds" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label" for="title">營地名稱</label>
+                            <input class="form-control" type="text" name="campground[title]" id="title" required>
+                            <div class="invalid-feedback">
+                                請輸入營地的名字
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label" for="price">價格</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">$</span>
+                                <input type="text" class="form-control" name="campground[price]" id="price"
+                                    placeholder="ex.1500" required>
+                                <div class="invalid-feedback">
+                                    請輸入價格
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">營地簡介</label>
+                    <textarea class="form-control" name="campground[description]" id="description" required></textarea>
+
+                    <div class="invalid-feedback">
+                        請簡單介紹這個營地ex.廁所乾淨是否乾淨呢？或是海拔多高？有沒有什麼特色之類的
+                    </div>
+                </div>
+                <div class="mb-3 form-floating">
+                    <select class="form-select" name="campground[city]" id="city" required>
+                        <option value=""></option>
+                        <% for (let city of cities){ %>
+                            <option value="<%=city%>">
+                                <%=city%>
+                            </option>
+                            <% } %>
+                    </select>
+                    <div class="invalid-feedback">
+                        請選擇營區所在縣市
+                    </div>
+                    <label class="form-label" for=" city">所在縣市</label>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for=" address">地址</label>
+                    <input class="form-control" type="text" name="campground[address]" id="address" placeholder="地址"
+                        required>
+                    <div class="invalid-feedback">
+                        請填寫地址
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" name="image" id="image" multiple>
+                    <div class="mb-3">
+                    </div>
+                </div>
+                <button class="btn btn-outline-primary">新增</button>
+            </form>
+
+            <a class="link-secondary" href=" http://localhost:3000/campgrounds/">取消</a>
+        </div>
+    </div>
