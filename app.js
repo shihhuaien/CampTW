@@ -2,7 +2,6 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
-
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -19,7 +18,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
-const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/campTW';
+const dbUrl = 'mongodb://127.0.0.1:27017/campTW';
+// const dbUrl = process.env.DB_URL;
 
 const MongoStore = require('connect-mongo');
 //連線atlas db 
