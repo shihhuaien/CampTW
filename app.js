@@ -18,11 +18,12 @@ const mongoSanitize = require('express-mongo-sanitize');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
-const dbUrl = 'mongodb://127.0.0.1:27017/campTW';
-// const dbUrl = process.env.DB_URL;
+//連線 local db 
+//const dbUrl = 'mongodb://127.0.0.1:27017/campTW';
+//連線 atlas db 
+const dbUrl = process.env.DB_URL;
 
 const MongoStore = require('connect-mongo');
-//連線atlas db 
 mongoose.connect(dbUrl);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
